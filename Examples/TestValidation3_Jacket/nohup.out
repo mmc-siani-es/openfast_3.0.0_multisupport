@@ -1,0 +1,246 @@
+
+ **************************************************************************************************
+ OpenFAST
+
+ Copyright (C) 2022 National Renewable Energy Laboratory
+ Copyright (C) 2022 Envision Energy USA LTD
+
+ This program is licensed under Apache License Version 2.0 and comes with ABSOLUTELY NO WARRANTY.
+ See the "LICENSE" file distributed with this software for details.
+ **************************************************************************************************
+
+ OpenFAST-v3.0.0-461-g2f1e4f71-dirty
+ Compile Info:
+  - Compiler: Intel(R) Fortran Compiler 1700
+  - Architecture: 64 bit
+  - Precision: double
+  - OpenMP: No
+  - Date: Jul 15 2022
+  - Time: 11:08:19
+ Execution Info:
+  - Date: 02/20/2023
+  - Time: 11:13:34-0000
+
+ OpenFAST input file heading:
+     FAST Certification Test #19: NREL 5.0 MW Baseline Wind Turbine with OC3 Monopile RF
+     Configuration, for use in offshore analysis
+
+ Running ElastoDyn.
+ Nodal outputs section of ElastoDyn input file not found or improperly formatted.
+ Running SubDyn.
+    Fixed bottom case detected
+    Performing Craig-Bampton reduction 360 DOFs -> 4 modes + 24 DOFs
+    SubDyn recommended dt: 0.00541 - Current dt: 0.00500 - Max frequency:    9.245
+    Calculating Full System Modes for output files
+    Exporting Summary file
+  Time: 0 of 100 seconds.
++                                                                                                  
++ Time: 1 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 2 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 3 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 4 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 5 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 6 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 7 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 8 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 9 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 10 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 11 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 12 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 13 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 14 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 15 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 16 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 17 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 18 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 19 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 20 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 21 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 22 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 23 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 24 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 25 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 26 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 27 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 28 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 29 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 30 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 31 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 32 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 33 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 34 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 35 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 36 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 37 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 38 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 39 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 40 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 41 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 42 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 43 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 44 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 45 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 46 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 47 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 48 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 49 of 100 seconds.  Estimated final completion at 11:14:12.
++                                                                                                  
++ Time: 50 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 51 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 52 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 53 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 54 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 55 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 56 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 57 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 58 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 59 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 60 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 61 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 62 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 63 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 64 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 65 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 66 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 67 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 68 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 69 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 70 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 71 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 72 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 73 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 74 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 75 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 76 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 77 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 78 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 79 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 80 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 81 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 82 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 83 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 84 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 85 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 86 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 87 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 88 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 89 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 90 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 91 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 92 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 93 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 94 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 95 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 96 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 97 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 98 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 99 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
++ Time: 100 of 100 seconds.  Estimated final completion at 11:14:11.
++                                                                                                  
+
+  Total Real Time:       37.148 seconds
+  Total CPU Time:        37.146 seconds
+  Simulation CPU Time:   36.716 seconds
+  Simulated Time:        100 seconds
+  Time Ratio (Sim/CPU):  2.7236
+
+  OpenFAST terminated normally.
+
