@@ -74,7 +74,7 @@ SUBROUTINE SDOut_Init( Init, y,  p, misc, InitOut, WtrDpth, ErrStat, ErrMsg )
    ErrStat = 0      
    ErrMsg=""
 
-   p%OutAllDims=12*p%NMembers*2    !size of AllOut Member Joint forces
+   p%OutAllDims=18*p%NMembers*2    !cromero size of AllOut Member Joint forces and displacement
 
    ! Check that the variables in OutList are valid      
    CALL SDOut_ChkOutLst( Init%SSOutList, p,  ErrStat2, ErrMsg2 ); if(Failed()) return
@@ -275,7 +275,7 @@ SUBROUTINE SDOut_MapOutputs(u,p,x, y, m, AllOuts, ErrStat, ErrMsg )
    integer(IntKi),                intent(   out )  :: ErrStat              ! Error status of the operation
    character(*),                  intent(   out )  :: ErrMsg               ! Error message if ErrStat /= ErrID_None
    !locals
-   integer(IntKi)                 :: iMemberOutput, iiNode, iSDNode, iMeshNode, I, J, L, L2      ! Counters
+   integer(IntKi)                 :: iMemberOutput, iiNode, iSDNode, iMeshNode, I, J, L, L2, L3     ! Counters !cromero L3
    integer(IntKi)                 :: maxOutModes  ! maximum modes to output, the minimum of 99 or p%nDOFM
    real(ReKi), dimension (6)      :: FM_elm, FK_elm, Fext  !output static and dynamic forces and moments
    real(ReKi), dimension (6)      :: FM_elm2, FK_elm2      !output static and dynamic forces and moments
@@ -284,8 +284,13 @@ SUBROUTINE SDOut_MapOutputs(u,p,x, y, m, AllOuts, ErrStat, ErrMsg )
    integer(IntKi)                 :: sgn !+1/-1 for node force calculations
    type(MeshAuxDataType), pointer :: pLst       !< Info for a given member-output (Alias to shorten notation)
    integer(IntKi), pointer        :: DOFList(:) !< List of DOF indices for a given Nodes (Alias to shorten notation)
+   !cromero Add to define X_nod in if p%OutAll
+   integer(IntKi)                          :: iElem !< Element index/number
+   integer(IntKi), dimension(2)            :: ElemNodes  ! Node IDs for element under consideration (may not be consecutive numbers)
+   real(ReKi)    , dimension(6)           :: X_nod ! Displacement for an node
    ErrStat = ErrID_None   
    ErrMsg  = ""
+
    
    AllOuts = 0.0_ReKi  ! initialize for those outputs that aren't valid (and thus aren't set in this routine)
          
@@ -343,9 +348,19 @@ SUBROUTINE SDOut_MapOutputs(u,p,x, y, m, AllOuts, ErrStat, ErrMsg )
          DO iiNode=1,2 !Iterate on requested nodes for that member (first and last)  
             call ElementForce(pLst, iiNode, 1, FM_elm, FK_elm, sgn, DIRCOS, .false.)
             ! Store in All Outs
-            L  = MaxOutPts+(iMemberOutput-1)*24+(iiNode-1)*12+1
-            L2 = L+11
+            L  = MaxOutPts+(iMemberOutput-1)*36+(iiNode-1)*18+1 !cromero change max, 12x2 now 18x2=36 and 12 now 18
+            L2 = L+11 !cromero change, 11+6 (displacement)
+            L3= L+17 !cromero Add displacement
+                  
+            !cromero Add to define X_nod
+            iElem         = pLst%ElmIDs(iiNode,1)             ! element number
+            ElemNodes     = p%Elems(iElem,2:3)                ! first and second node ID associated with element iElem
+            X_nod(1:6)      = m%U_full_elast (p%NodesDOF(ElemNodes((iiNode-1)+1))%List(1:6)) !cromero Add displacements
+            X_nod(4:6)      = matmul(DIRCOS,X_nod(4:6)) !cromero local ref (rad)
+                 
+            !AllOuts( L:L2 ) = (sgn*/FK_elm/,sgn*/FM_elm/,X_nod) !cromero Add X_nod
             AllOuts( L:L2 ) =sgn* (/FK_elm,FM_elm/)
+            AllOuts( (L2+1):L3 )=(X_nod)
          ENDDO !iiNode, nodes 1 and 2
       ENDDO ! iMemberOutput, Loop on members
    ENDIF
@@ -686,7 +701,7 @@ SUBROUTINE SDOut_ChkOutLst( OutList, p, ErrStat, ErrMsg )
    INTEGER                                   :: INDX                                      ! Index for valid arrays
    CHARACTER(ChanLen)                        :: OutListTmp                                ! A string to temporarily hold OutList(I).
    !CHARACTER(28), PARAMETER               :: OutPFmt    = "( I4, 3X,A 10,1 X, A10 )"   ! Output format parameter output list.
-   CHARACTER(ChanLen), DIMENSION(24)         :: ToTUnits,ToTNames,ToTNames0
+   CHARACTER(ChanLen), DIMENSION(36)         :: ToTUnits,ToTNames,ToTNames0 !cromero
    LOGICAL                  :: InvalidOutput(0:MaxOutPts)                        ! This array determines if the output channel is valid for this configuration
    LOGICAL                  :: CheckOutListAgain
    ErrStat = ErrID_None   
@@ -791,18 +806,18 @@ SUBROUTINE SDOut_ChkOutLst( OutList, p, ErrStat, ErrMsg )
       END IF
       
    END DO
-   
+   !cromero Edit Names and Units
    IF (p%OutAll) THEN   !Finish populating the OutParam with all the joint forces and moments
-       ToTNames0=RESHAPE(SPREAD( (/"FKxe", "FKye", "FKze", "MKxe", "MKye", "MKze", "FMxe", "FMye", "FMze", "MMxe", "MMye", "MMze"/), 2, 2), (/24/) )
-       ToTUnits=RESHAPE(SPREAD( (/"(N)  ","(N)  ","(N)  ", "(N*m)","(N*m)","(N*m)", "(N)  ","(N)  ","(N)  ", "(N*m)","(N*m)","(N*m)"/), 2, 2), (/24/) )
+       ToTNames0=RESHAPE(SPREAD( (/"FKxe", "FKye", "FKze", "MKxe", "MKye", "MKze", "FMxe", "FMye", "FMze", "MMxe", "MMye", "MMze","TDXss","TDYss","TDZss","RDxe","RDye","RDze"/), 2, 2), (/36/) )
+       ToTUnits=RESHAPE(SPREAD( (/"(N)  ","(N)  ","(N)  ", "(N*m)","(N*m)","(N*m)", "(N)  ","(N)  ","(N)  ", "(N*m)","(N*m)","(N*m)","(m)","(m)","(m)","(rad)","(rad)","(rad)"/), 2, 2), (/36/) )
        DO I=1,p%NMembers
            DO K=1,2
-            DO J=1,12  
-             TotNames(J+(K-1)*12)=TRIM("M"//Int2Lstr(I))//TRIM("J"//Int2Lstr(K))//TRIM(TotNames0(J))
+            DO J=1,18 !cromero now 1,18  
+             TotNames(J+(K-1)*18)=TRIM("M"//Int2Lstr(I))//TRIM("J"//Int2Lstr(K))//TRIM(TotNames0(J))
             ENDDO  
            ENDDO
-           p%OutParam(p%NumOuts+(I-1)*12*2+1:p%NumOuts+I*12*2)%Name  = ToTNames
-           p%OutParam(p%NumOuts+(I-1)*12*2+1:p%NumOuts+I*12*2)%Units = ToTUnits
+           p%OutParam(p%NumOuts+(I-1)*18*2+1:p%NumOuts+I*18*2)%Name  = ToTNames !cromero
+           p%OutParam(p%NumOuts+(I-1)*18*2+1:p%NumOuts+I*18*2)%Units = ToTUnits
        ENDDO
        p%OutParam(p%NumOuts+1:p%NumOuts+p%OutAllDims)%SignM = 1
        p%OutParam(p%NumOuts+1:p%NumOuts+p%OutAllDims)%Indx= MaxOutPts+(/(J, J=1, p%OutAllDims)/) 
